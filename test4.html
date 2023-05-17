@@ -1,0 +1,48 @@
+<script>
+
+    /*
+        [문제]
+            철수는 게임을 하고 있다. 
+            monster배열은 게임의 적 4마리를 의미하고 
+            숫자는 몬스터의 체력을 의미한다.
+            
+            철수의 공격력은 5이다.    
+            총 다섯번을 반복하면서 
+            랜덤으로 몬스터 중 하나를 선택해서 공격한다.
+            모든 몬스터들을 공격한 후 몬스터들의 체력을 출력하시오.
+            단, 몬스터 체력은 0이 되면 더 이상 내려가지 않고,
+            공격횟수로 인정하지 않는다.
+        [예시]
+            0번째 몬스터 공격! : 4,7,8,6
+            0번째 몬스터 공격! : 0,7,8,6
+            0번째 몬스터 공격! : 체력이 0인 몬스터입니다. 다시 선택해주세요.
+            1번째 몬스터 공격! : 0,2,8,6
+            1번째 몬스터 공격! : 0,0,8,6
+            0번째 몬스터 공격! : 체력이 0인 몬스터입니다. 다시 선택해주세요.
+            2번째 몬스터 공격! : 0,0,3,6
+    */
+
+    let monster = [9, 7, 8, 6];
+    let power = 5;
+
+    let count = 0;
+    for(let i=0; i<5; i++){
+        let index = Math.floor(Math.random() * monster.length);
+        document.write(index + "번째 몬스터 공격! : ");
+        if(monster[index] > 0){
+            if(monster[index] - power >= 0){
+                monster[index] -= power;
+            } else{
+                monster[index] = 0;
+            }
+            count++;
+            document.write(monster + "<br>");
+            if(count == 5){
+                break;
+            }
+        } else{
+            document.write("체력이 0인 몬스터입니다. 다시 선택해주세요.<br>");
+            i--;
+        }
+        }
+</script>
