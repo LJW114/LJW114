@@ -1,0 +1,31 @@
+<script>
+
+    /*
+        [문제]
+            arr배열은 철수 반 중간고사 점수이다. 
+            각 학생들이 다른 학생들과 비교하여 자기보다 크거나 같은 점수를 출력하시오.
+        [정답]
+            10보다 큰 점수는 54 90 20 이다.
+            54보다 큰 점수는 90 이다.
+            90보다 큰 점수는 없다.
+            20보다 큰 점수는 54 90 이다.            
+    */
+
+    let arr = [10, 54, 90, 20];
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i] + "보다 큰 점수는 ");
+        let check = false;
+        for (let j = 0; j < arr.length; j++) {
+            if ((arr[i] <= arr[(j + 1) % 4]) && (arr[i] != arr[(j + 1) % 4])) {                     // 비교 대상보다 크거나 같고 , 비교대상끼리가 아닐때
+                document.write(arr[j + 1] + " ");
+                check = true;
+            }
+        }
+        if(check == true){
+            document.write("이다.<br>");
+        } else{
+            document.write("없다.<br>");
+        }
+        document.write("<br>");
+    }
+</script>
