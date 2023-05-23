@@ -1,0 +1,42 @@
+<script>
+
+    /*
+        [문제]
+            arr배열을 이차원으로 만들고 랜덤 값(-100~100)을 
+            3개씩 3줄 총 9개를 만들고 사각형모양 으로 출력한다.
+            그 중에 가장 작은 값을 출력하시오.
+            단, 음수는 양수로 변경해 비교하시오.
+        [예시]
+            [68,  44,-13]
+            [-77,100,-49]
+            [-58,-37,-78]
+            가장 작은 값 = -13  
+    */
+
+    let arr = [];
+    let minNum = 100;
+    for(let i=0; i<3; i++){
+        let temp = [];
+        for(let j=0; j<3; j++){
+            let num = Math.floor(Math.random() * 201) - 100;
+            temp.push(num);
+            let tempNum = num;
+            if(tempNum < 0){
+                tempNum = - tempNum;
+            }
+            let tempminNum = minNum;
+            if(tempminNum < 0){
+                tempminNum = -tempminNum;
+            }
+            if(tempminNum > tempNum){
+                minNum = num;
+            }
+        }
+        arr.push(temp);
+    }
+    for(let i=0; i<3; i++){
+        document.write(arr[i] + "<br>");
+    }
+    document.write("가장 작은 수 = " + minNum);
+
+</script>
