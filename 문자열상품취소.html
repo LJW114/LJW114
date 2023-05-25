@@ -1,0 +1,64 @@
+<script>
+
+    /*
+        [문제]
+            itemList은 쇼핑몰 판매상품데이터이다.
+            itemName는 상품이름이다.
+            price는 아이템 가격이다.
+            
+            orderList는 오늘 주문 목록이다. 
+            ordernumber는 주문번호이다. 
+            orderid는 주문한 회원 id 이다.
+            itemName는 주문한 상품이름이다. 
+            count는 주문한 상품개수이다. 
+
+            cancelList는 주문취소 목록이다. 
+            cancelnumber는 주문을 취소한 번호이다. 
+
+            취소한 상품 이름별 총가격을 구하시오.
+        [정답]   
+            [{'itemname': '바나나', 'total': 22000}, 
+            {'itemname': '딸기', 'total': 25800}]
+    */
+
+    let itemList = [
+        { "itemname": "사과", "price": 1100 },
+        { "itemname": "바나나", "price": 2000 },
+        { "itemname": "딸기", "price": 4300 }
+    ];
+    let orderList = [
+        { "ordernumber": 100001, "orderid": "qwer1234", "itemname": "사과", "count": 3 },
+        { "ordernumber": 100002, "orderid": "pythongood", "itemname": "딸기", "count": 6 },
+        { "ordernumber": 100003, "orderid": "testid", "itemname": "바나나", "count": 4 },
+        { "ordernumber": 100004, "orderid": "pythongood", "itemname": "사과", "count": 2 },
+        { "ordernumber": 100005, "orderid": "testid", "itemname": "바나나", "count": 7 },
+        { "ordernumber": 100006, "orderid": "qwer1234", "itemname": "사과", "count": 2 },
+        { "ordernumber": 100007, "orderid": "testid", "itemname": "사과", "count": 3 }
+    ];
+    let cancelList = [
+        { "cancelnumber": 100003 },
+        { "cancelnumber": 100002 },
+        { "cancelnumber": 100005 }
+    ];
+
+    for (let i = 0; i < itemList.length; i++) {
+        let total = 0;
+        for (let j = 0; j < orderList.length; j++) {
+            for (let z = 0; z < cancelList.length; z++) {
+                if(cancelList[z]["cancelnumber"] == orderList[j]["ordernumber"]){
+                    if(orderList[j]["itemname"] == itemList[i]["itemname"]){
+                        total += orderList[j]["count"];
+                    }
+                }
+            }
+        }
+            if(total > 0){
+                let info = {};
+                info["itemname"] = itemList[i]["itemname"];
+                total = itemList[i]["price"] * total;
+                info["total"] = total;
+                document.write(JSON.stringify(info) + "<br>");
+            }
+        
+    }
+</script>
