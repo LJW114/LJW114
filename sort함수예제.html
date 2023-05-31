@@ -1,0 +1,40 @@
+<script>
+    let arr = [6, 7, 2, 1, 9, 77];
+
+    // 내림차순
+    function check(a, b){
+        return b - a;
+    }
+    function mysort(arr){
+    for(let i = 0; i<arr.length; i++){
+        for(let j=i; j<arr.length; j++){
+            if(check(arr[i], arr[j]) > 0){
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+mysort(arr);
+document.write(arr + "<br>");
+    
+    //올림차순
+    function check1(a, b){
+        return a - b;
+    }
+
+    function mysort1(arr){
+        for(let i = 0; i<arr.length; i++){
+            for(let j = i; j<arr.length; j++){
+                if(check1(arr[i], arr[j]) > 0){
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+    mysort1(arr);
+    document.write(arr);
+</script>
