@@ -1,0 +1,120 @@
+<script>
+
+    /*
+        [문제1] 
+            여학생들 점수 총합과 남학생들의 점수 총합을 비교하고 
+            점수가 더 큰쪽을 출력해주는 함수를 만드시오.
+        [정답1]
+            333
+    */
+    function quiz1(student, score) {
+        let total1 = 0;
+        let total2 = 0;
+        for (let i = 1; i < student.length; i++) {
+            if (student[i][2] == "남") {
+                total1 += (score[i][1] + score[i][2]);
+            } else if (student[i][2] == "여") {
+                total2 += (score[i][1] + score[i][2]);
+            }
+        }
+        if (total1 > total2) {
+            document.write("quiz1 = " + total1 + " <br>");
+        } else if (total2 > total1) {
+            document.write("quiz1 = " + total2 + "<br>");
+        }
+    }
+    /*	
+        [문제2] 
+            평균이 60점이상이면 합격이다.
+            합격생들의 번호, 이름, 점수를 출력해주는 함수를 만드시오.
+        [정답2]
+            1003 김민정 64.5
+            1005 오만석 64.5
+    */
+    function quiz2(student, score) {
+        let aver = 0;
+        for (let i = 1; i < student.length; i++) {
+            aver = (score[i][1] + score[i][2]) / 2;
+            if (aver >= 60) {
+                document.write(student[i][0] + " " + student[i][1] + " " + aver + "<br>");
+            }
+        }
+    }
+    /*
+        [문제3] 
+            랜덤으로 학생의 이름을 전달하면 
+            그 학생의 번호 및 점수를 출력해주는 함수를 만드시오.
+        [예시3]
+            1003번 64, 65
+            1 ~ 6
+    */
+    function quiz3(student, score) {
+        let ran = Math.floor(Math.random() * 6) + 1;
+        document.write("ran = " + ran + "<br>");
+        document.write(score[ran][0] + "번 " + score[ran][1] + ", " + score[ran][2] + "<br>");
+    }
+    /*	
+        [문제4] 
+            국어점수가 수학점수 보다 큰 학생들의
+            번호, 이름을 출력해주는 함수를 만드시오.
+        [정답4]
+            1002번 이영희
+    */
+    function quiz4(student, score) {
+        for (let i = 1; i < student.length; i++) {
+            if (score[i][1] > score[i][2]) {
+                document.write(student[i][0] + "번 " + student[i][1] + "<br>");
+            }
+        }
+    }
+    /*	
+        [문제5] 
+            총점 1등의 번호, 이름을 출력해주는
+            함수를 만드시오.
+            단, 여러명이면 전부 출력하시오.
+        [정답5]
+            1003번 김민정
+            1005번 오만석
+    */
+
+    function quiz5(student, score) {
+        let maxNum = 0;
+        for (let i = 1; i < student.length; i++) {
+            let total = score[i][1] + score[i][2];
+            if (maxNum < total) {
+                maxNum = total;
+            } 
+        }
+        for(let i = 1; i<student.length; i++){
+            let total = score[i][1] + score[i][2];
+            if(maxNum == total){
+                document.write(student[i][0] + "번 " + student[i][1] + "<br>");
+            }
+        }
+    }
+
+    let student = [
+        ["번호", "이름", "성별"],
+        [1001, "이만수", "남"],
+        [1002, "이영희", "여"],
+        [1003, "김민정", "여"],
+        [1004, "이철민", "남"],
+        [1005, "오만석", "남"],
+        [1006, "최이슬", "여"]
+    ];
+
+    let score = [
+        ["번호", "국어", "수학"],
+        [1001, 10, 20],
+        [1002, 70, 30],
+        [1003, 64, 65],
+        [1004, 13, 87],
+        [1005, 49, 80],
+        [1006, 14, 90]
+    ];
+    quiz1(student, score);
+    quiz2(student, score);
+    quiz3(student, score);
+    quiz4(student, score);
+    quiz5(student, score);
+</script>
