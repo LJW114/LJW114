@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>과일 목록</h4>
+    <div id="list">
+
+    </div>
+    <div id="text">
+
+    </div>
+   <script>
+    let list = document.querySelector("#list");
+    let ul = document.createElement("ul");
+    list.append(ul);
+
+    let li1 = document.createElement("li");
+    li1.innerText = "사과";
+    ul.append(li1);
+
+    let li2 = document.createElement("li");
+    li2.innerText = "바나나";   
+    ul.append(li2);
+
+    let li3 = document.createElement("li");
+    li3.innerText = "딸기";
+    ul.append(li3);
+
+    let text = document.querySelector("#text");
+
+    let textnode = document.createTextNode("안녕하세요.");
+    text.append(textnode);
+   </script>
+</body>
+</html>
