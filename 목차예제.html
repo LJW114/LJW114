@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" id="list">목차 보기</a>
+
+    <hr>
+
+    <ul id="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+    </ul>
+
+    <script>
+        let isShow = false;
+        function displayList() {
+            if(isShow == false) {
+                document.querySelector("#menu").style.display = "block";            // 노출 처리
+                list.innerHTML = "목차 닫기";   
+                isShow = true;
+            } else {
+                document.querySelector("#menu").style.display = "none";             // 숨김 처리
+                list.innerHTML = "목차 보기";   
+                isShow = false;
+            }
+        }
+
+        let list = document.querySelector("#list");
+        list.addEventListener("click", displayList);
+    </script>
+    
+</body>
+</html>
