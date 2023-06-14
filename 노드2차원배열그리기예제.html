@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function clickEvent(e){
+            for(let i = 0; i<list.length; i++){
+                for(let j = 0; j<list[i].length; j++){
+                    if(e.target.innerText == list[i][j].innerText){
+                        alert(i + ", " + j);
+                    }
+                }
+            }
+        }
+        let body = document.body;
+        let table = document.createElement("table");
+
+        let num = 1;
+        let list = [];
+        for(let i = 0; i<5; i++){
+            let tdList = [];
+            let tr = document.createElement("tr");
+            for(let j = 0; j<5; j++){
+                let td = document.createElement("td");
+                td.addEventListener("click", clickEvent);
+
+                td.innerText = num;
+                tr.append(td);
+
+                num++;
+                tdList.push(td);
+            }
+            list.push(tdList);
+            table.append(tr);
+        }
+        body.append(table);
+    </script>
+</body>
+
+</html>
